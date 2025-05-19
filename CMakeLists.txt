@@ -3,9 +3,9 @@ project(PrakBS21 C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(PrakBS21 main.c
-        main.h
+add_executable(PrakBS21
+        main.c
         keyValStore.c
-        keyValStore.h
-        sub.c
-        sub.h)
+        sub.c)
+
+target_link_libraries(PrakBS21 pthread)
