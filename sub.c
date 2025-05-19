@@ -33,6 +33,12 @@ void handle_client(int client_socket) {
                 snprintf(response, sizeof(response), "DEL:%s:key_deleted\n", key);
             else
                 snprintf(response, sizeof(response), "DEL:%s:key_nonexistent\n", key);
+        } else if (strcmp(cmd, "BEG") == 0) {
+            begin_transaction();
+            snprintf(response, sizeof(response), "TRANSACTION STARTED\n");
+        } else if (strcmp(cmd, "END") == 0) {
+            end_transaction();
+            snprintf(response, sizeof(response), "TRANSACTION ENDED\n");
         } else if (strcmp(cmd, "QUIT") == 0) {
             snprintf(response, sizeof(response), "Goodbye\n");
             send(client_socket, response, strlen(response), 0);
@@ -49,7 +55,7 @@ void handle_client(int client_socket) {
 }
 
 void run_server(int port) {
-    signal(SIGCHLD, SIG_IGN); // Zombies vermeiden
+    signal(SIGCHLD, SIG_IGN);
 
     int server_fd, client_fd;
     struct sockaddr_in address;
