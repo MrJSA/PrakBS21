@@ -27,6 +27,13 @@ DEL name1
 DEL value1
 ```
 
+Subscribe to a key
+```
+SUB key
+SUB name1
+SUB value1
+```
+
 Starts an exclusive transaction:
 ```
 BEG
