@@ -21,6 +21,10 @@ stdio.h
 -
 semaphore.h
 -
+unistd.h
+-
+fcntl.h
+-
 
 /tmp/PrakBS21/keyValStore.h
 
